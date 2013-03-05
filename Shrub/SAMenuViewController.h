@@ -23,6 +23,12 @@
 
 @end
 
+@protocol SAMenuViewControllerDelegate <NSObject>
+
+- (void)menuViewController:(SAMenuViewController *)menuViewController didSelectRowAtIndex:(NSUInteger)index;
+
+@end
+
 @interface SAMenuViewController : UIViewController
 
 - (void)toggleMenuHidden;
@@ -30,6 +36,7 @@
 
 @property (nonatomic, assign, getter = isMenuHidden) BOOL menuHidden;
 @property (nonatomic, weak) id <SAMenuViewControllerDatasource> datasource;
+@property (nonatomic, weak) id <SAMenuViewControllerDelegate> delegate;
 @property (nonatomic, strong) UIViewController *contentViewController;
 
 @end

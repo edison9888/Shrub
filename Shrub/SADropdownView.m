@@ -56,13 +56,22 @@ CGFloat SADropdownViewTopPadding = 30.0f;
 
 - (void)addItem:(SADropdownItem *)item
 {
-    [self addSubview:item];
-        
+    [item setTag:[_items count]];
     [item setFrame:CGRectMake(0.0f,
                               [_items count] ? CGRectGetMaxY([[_items lastObject] frame]) : SADropdownViewTopPadding,
                               CGRectGetWidth([self bounds]),
                               52.0f)];
+    [item addTarget:self action:@selector(itemPressed:) forControlEvents:UIControlEventTouchUpInside];
     [_items addObject:item];
+    [self addSubview:item];
+}
+
+- (void)itemPressed:(id)sender
+{
+    if ([[self delegate] conformsToProtocol:@protocol(SADropdownViewDelegate)])
+    {
+        [[self delegate] dropdownView:self itemSelectedAtIndex:[(UIButton *)sender tag]];
+    }
 }
 
 @end

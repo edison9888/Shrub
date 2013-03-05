@@ -26,6 +26,12 @@
 		2258B3E116E5AF3300AB3DB4 /* UIColor+SAHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2258B3E016E5AF3300AB3DB4 /* UIColor+SAHelpers.m */; };
 		2258B3E416E5B0E200AB3DB4 /* dropdown_item_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3E216E5B0E200AB3DB4 /* dropdown_item_bg.png */; };
 		2258B3E516E5B0E200AB3DB4 /* dropdown_item_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3E316E5B0E200AB3DB4 /* dropdown_item_bg@2x.png */; };
+		2258B3EE16E5B4D700AB3DB4 /* SAExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2258B3EC16E5B4D700AB3DB4 /* SAExploreViewController.m */; };
+		2258B3EF16E5B4D700AB3DB4 /* SAExploreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3ED16E5B4D700AB3DB4 /* SAExploreViewController.xib */; };
+		2258B3F316E5B4E100AB3DB4 /* SAActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2258B3F116E5B4E100AB3DB4 /* SAActivityViewController.m */; };
+		2258B3F416E5B4E100AB3DB4 /* SAActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3F216E5B4E100AB3DB4 /* SAActivityViewController.xib */; };
+		2258B3F816E5B4E800AB3DB4 /* SAProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2258B3F616E5B4E800AB3DB4 /* SAProfileViewController.m */; };
+		2258B3F916E5B4E800AB3DB4 /* SAProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3F716E5B4E800AB3DB4 /* SAProfileViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +65,15 @@
 		2258B3E016E5AF3300AB3DB4 /* UIColor+SAHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SAHelpers.m"; sourceTree = "<group>"; };
 		2258B3E216E5B0E200AB3DB4 /* dropdown_item_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropdown_item_bg.png; sourceTree = "<group>"; };
 		2258B3E316E5B0E200AB3DB4 /* dropdown_item_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_item_bg@2x.png"; sourceTree = "<group>"; };
+		2258B3EB16E5B4D700AB3DB4 /* SAExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAExploreViewController.h; sourceTree = "<group>"; };
+		2258B3EC16E5B4D700AB3DB4 /* SAExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAExploreViewController.m; sourceTree = "<group>"; };
+		2258B3ED16E5B4D700AB3DB4 /* SAExploreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAExploreViewController.xib; sourceTree = "<group>"; };
+		2258B3F016E5B4E100AB3DB4 /* SAActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAActivityViewController.h; sourceTree = "<group>"; };
+		2258B3F116E5B4E100AB3DB4 /* SAActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAActivityViewController.m; sourceTree = "<group>"; };
+		2258B3F216E5B4E100AB3DB4 /* SAActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAActivityViewController.xib; sourceTree = "<group>"; };
+		2258B3F516E5B4E800AB3DB4 /* SAProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAProfileViewController.h; sourceTree = "<group>"; };
+		2258B3F616E5B4E800AB3DB4 /* SAProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAProfileViewController.m; sourceTree = "<group>"; };
+		2258B3F716E5B4E800AB3DB4 /* SAProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAProfileViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +120,12 @@
 		2258B3A516E5994A00AB3DB4 /* Shrub */ = {
 			isa = PBXGroup;
 			children = (
+				2258B3CF16E59F6800AB3DB4 /* SAHomeViewController */,
+				2258B3EA16E5B4BB00AB3DB4 /* SAProfileViewController */,
+				2258B3E916E5B4B200AB3DB4 /* SAActivityViewController */,
+				2258B3E816E5B4AA00AB3DB4 /* SAExploreViewController */,
 				2258B3E616E5B0F200AB3DB4 /* assets */,
 				2258B3DD16E5AF1D00AB3DB4 /* Helpers */,
-				2258B3CF16E59F6800AB3DB4 /* SAHomeViewController */,
 				2258B3C716E59D6F00AB3DB4 /* SARootMenuViewController */,
 				2258B3BD16E599BF00AB3DB4 /* SAMenuViewController */,
 				2258B3BC16E5995200AB3DB4 /* SAAppDelegate */,
@@ -231,6 +249,36 @@
 			name = buttons;
 			sourceTree = "<group>";
 		};
+		2258B3E816E5B4AA00AB3DB4 /* SAExploreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2258B3EB16E5B4D700AB3DB4 /* SAExploreViewController.h */,
+				2258B3EC16E5B4D700AB3DB4 /* SAExploreViewController.m */,
+				2258B3ED16E5B4D700AB3DB4 /* SAExploreViewController.xib */,
+			);
+			name = SAExploreViewController;
+			sourceTree = "<group>";
+		};
+		2258B3E916E5B4B200AB3DB4 /* SAActivityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2258B3F016E5B4E100AB3DB4 /* SAActivityViewController.h */,
+				2258B3F116E5B4E100AB3DB4 /* SAActivityViewController.m */,
+				2258B3F216E5B4E100AB3DB4 /* SAActivityViewController.xib */,
+			);
+			name = SAActivityViewController;
+			sourceTree = "<group>";
+		};
+		2258B3EA16E5B4BB00AB3DB4 /* SAProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2258B3F516E5B4E800AB3DB4 /* SAProfileViewController.h */,
+				2258B3F616E5B4E800AB3DB4 /* SAProfileViewController.m */,
+				2258B3F716E5B4E800AB3DB4 /* SAProfileViewController.xib */,
+			);
+			name = SAProfileViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,6 +338,9 @@
 				2258B3D416E59F7C00AB3DB4 /* SAHomeViewController.xib in Resources */,
 				2258B3E416E5B0E200AB3DB4 /* dropdown_item_bg.png in Resources */,
 				2258B3E516E5B0E200AB3DB4 /* dropdown_item_bg@2x.png in Resources */,
+				2258B3EF16E5B4D700AB3DB4 /* SAExploreViewController.xib in Resources */,
+				2258B3F416E5B4E100AB3DB4 /* SAActivityViewController.xib in Resources */,
+				2258B3F916E5B4E800AB3DB4 /* SAProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +360,9 @@
 				2258B3D816E5A28200AB3DB4 /* SADropdownView.m in Sources */,
 				2258B3DC16E5A33A00AB3DB4 /* SADropdownItem.m in Sources */,
 				2258B3E116E5AF3300AB3DB4 /* UIColor+SAHelpers.m in Sources */,
+				2258B3EE16E5B4D700AB3DB4 /* SAExploreViewController.m in Sources */,
+				2258B3F316E5B4E100AB3DB4 /* SAActivityViewController.m in Sources */,
+				2258B3F816E5B4E800AB3DB4 /* SAProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

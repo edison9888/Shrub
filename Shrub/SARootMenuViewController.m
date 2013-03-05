@@ -9,8 +9,14 @@
 #import "SARootMenuViewController.h"
 
 #import "SAHomeViewController.h"
+#import "SAActivityViewController.h"
+#import "SAExploreViewController.h"
+#import "SAProfileViewController.h"
 
-@interface SARootMenuViewController () <SAMenuViewControllerDatasource>
+static NSString * const SAMenuItemTitleKey = @"SAMenuItemTitle";
+static NSString * const SAMenuItemViewControllerClassKey = @"SAMenuItemViewControllerClass";
+
+@interface SARootMenuViewController () <SAMenuViewControllerDatasource, SAMenuViewControllerDelegate>
 {
     NSArray *_menuItems;
 }
@@ -26,8 +32,13 @@
     if (self)
     {
         [self setDatasource:self];
+        [self setDelegate:self];
         
-        _menuItems = @[@"Home", @"Explore", @"Activity", @"Profile"];
+        _menuItems = @[@{SAMenuItemTitleKey :  @"Home", SAMenuItemViewControllerClassKey : [SAHomeViewController class]},
+                       @{SAMenuItemTitleKey : @"Explore", SAMenuItemViewControllerClassKey : [SAExploreViewController class]},
+                       @{SAMenuItemTitleKey :  @"Activity", SAMenuItemViewControllerClassKey : [SAActivityViewController class]},
+                       @{SAMenuItemTitleKey : @"Profile", SAMenuItemViewControllerClassKey : [SAProfileViewController class]}
+                       ];
     }
     return self;
 }
@@ -43,6 +54,18 @@
 
 #pragma mark - SAMenuViewControllerDelegate Methods
 
+- (void)menuViewController:(SAMenuViewController *)menuViewController didSelectRowAtIndex:(NSUInteger)index
+{
+    Class viewControllerClass = _menuItems[index][SAMenuItemViewControllerClassKey];
+    if (![[self contentViewController] isKindOfClass:viewControllerClass])
+    {
+        [self setContentViewController:[viewControllerClass new]];
+        [self setMenuHidden:YES];
+    }
+}
+
+#pragma mark - SAMenuViewControllerDatasource Methods
+
 - (NSUInteger)numberOfRowsInMenuViewController:(SAMenuViewController *)menuViewController
 {
     return [_menuItems count];
@@ -55,7 +78,7 @@
 
 - (NSString *)menuViewController:(SAMenuViewController *)menuViewController titleForRowAtIndex:(NSUInteger)index
 {
-    return _menuItems[index];
+    return _menuItems[index][SAMenuItemTitleKey];
 }
 
 @end

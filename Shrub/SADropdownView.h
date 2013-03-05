@@ -11,8 +11,17 @@
 FOUNDATION_EXPORT CGFloat SADropdownViewTopPadding;
 
 @class SADropdownItem;
+@class SADropdownView;
+
+@protocol SADropdownViewDelegate <NSObject>
+
+- (void)dropdownView:(SADropdownView *)dropdownView itemSelectedAtIndex:(NSUInteger)index;
+
+@end
 
 @interface SADropdownView : UIView
+
+@property (nonatomic, weak) id <SADropdownViewDelegate> delegate;
 
 - (void)removeAllItems;
 - (void)addItem:(SADropdownItem *)item;

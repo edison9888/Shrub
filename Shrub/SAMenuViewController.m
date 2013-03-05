@@ -16,7 +16,7 @@
 
 static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
 
-@interface SAMenuViewController ()
+@interface SAMenuViewController () <SADropdownViewDelegate>
 {
     __weak SAMenuView *_menuView;
     UINavigationController *_menuNavigationController;
@@ -41,6 +41,7 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
         [self addChildViewController:_menuNavigationController];
         
         _dropdownView = [[SADropdownView alloc] initWithFrame:CGRectMake(0.0f, 44.0f - SADropdownViewTopPadding, 320.0f, 0.0f)];
+        [_dropdownView setDelegate:self];
     }
     return self;
 }
@@ -134,6 +135,16 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
 - (void)toggleMenuHidden
 {
     [self setMenuHidden:![self isMenuHidden]];
+}
+
+#pragma mark - SADDropdownDelegate Methods
+
+- (void)dropdownView:(SADropdownView *)dropdownView itemSelectedAtIndex:(NSUInteger)index
+{
+    if ([[self delegate] conformsToProtocol:@protocol(SAMenuViewControllerDelegate)])
+    {
+        [[self delegate] menuViewController:self didSelectRowAtIndex:index];
+    }
 }
 
 @end
