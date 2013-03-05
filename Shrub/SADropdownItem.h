@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SADropdownItem : UIView
+@interface SADropdownItem : UIButton
+
 
 @end

@@ -26,9 +26,10 @@
 @interface SAMenuViewController : UIViewController
 
 - (void)toggleMenuHidden;
+- (void)reloadData;
 
 @property (nonatomic, assign, getter = isMenuHidden) BOOL menuHidden;
-@property (nonatomic, weak) id <SAMenuViewControllerDatasource> delegate;
+@property (nonatomic, weak) id <SAMenuViewControllerDatasource> datasource;
 @property (nonatomic, strong) UIViewController *contentViewController;
 
 @end

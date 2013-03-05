@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+FOUNDATION_EXPORT CGFloat SADropdownViewTopPadding;
+
+@class SADropdownItem;
+
 @interface SADropdownView : UIView
 
-
+- (void)removeAllItems;
+- (void)addItem:(SADropdownItem *)item;
 
 @end

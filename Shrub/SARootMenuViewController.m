@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        [self setDelegate:self];
+        [self setDatasource:self];
     }
     return self;
 }
@@ -34,6 +34,7 @@
     
     SAHomeViewController *homeViewController = [SAHomeViewController new];
     [self setContentViewController:homeViewController];
+    [self reloadData];
 }
 
 #pragma mark - SAMenuViewControllerDelegate Methods

@@ -11,6 +11,7 @@
 #import "SADropdownView.h"
 #import "SAMenuView.h"
 #import <objc/runtime.h>
+#import "SADropdownItem.h"
 
 static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
 
@@ -38,7 +39,7 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
         [[_menuNavigationController view] setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
         [self addChildViewController:_menuNavigationController];
         
-        _dropdownView = [[SADropdownView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
+        _dropdownView = [[SADropdownView alloc] initWithFrame:CGRectMake(0.0f, 44.0f - SADropdownViewTopPadding, 320.0f, 200.0f)];
         [_dropdownView setBackgroundColor:[UIColor blackColor]];
     }
     return self;
@@ -84,7 +85,7 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
     {
         [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
-            [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, 30.0f)];
+            [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, SADropdownViewTopPadding)];
             
         } completion:^(BOOL finished) {
             
@@ -105,6 +106,30 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
 }
 
 #pragma mark - Instance Methods
+
+- (void)reloadData
+{
+    [_dropdownView removeAllItems];
+    
+    if ([[self datasource] conformsToProtocol:@protocol(SAMenuViewControllerDatasource)])
+    {
+        for (NSUInteger i = 0; i < [[self datasource] numberOfRowsInMenuViewController:self]; i++)
+        {
+            SADropdownItem *item = [SADropdownItem new];
+            if ([[self datasource] respondsToSelector:@selector(menuViewController:titleForRowAtIndex:)])
+            {
+                [item setTitle:[[self datasource] menuViewController:self titleForRowAtIndex:i] forState:UIControlStateNormal];
+            }
+            if ([[self datasource] respondsToSelector:@selector(menuViewController:imageForRowAtIndex:)])
+            {
+                [item setImage:[[self datasource] menuViewController:self imageForRowAtIndex:i] forState:UIControlStateNormal];
+            }
+            [_dropdownView addItem:item];
+        }
+    }
+    
+    [_dropdownView sizeToFit];
+}
 
 - (void)toggleMenuHidden
 {
