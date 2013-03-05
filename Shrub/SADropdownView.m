@@ -9,6 +9,8 @@
 #import "SADropdownView.h"
 
 #import "SADropdownItem.h"
+#import "UIColor+SAHelpers.h"
+#import <QuartzCore/QuartzCore.h>
 
 CGFloat SADropdownViewTopPadding = 30.0f;
 
@@ -28,6 +30,10 @@ CGFloat SADropdownViewTopPadding = 30.0f;
     if (self)
     {
         _items = [NSMutableArray new];
+        [self setBackgroundColor:[UIColor SADarkGreyColor]];
+        
+        [[self layer] setCornerRadius:6.0f];
+        [[self layer] setMasksToBounds:YES];
     }
     return self;
 }
@@ -53,9 +59,9 @@ CGFloat SADropdownViewTopPadding = 30.0f;
     [self addSubview:item];
         
     [item setFrame:CGRectMake(0.0f,
-                              [_items count] ? CGRectGetMaxY([[_items lastObject] bounds]) : SADropdownViewTopPadding,
+                              [_items count] ? CGRectGetMaxY([[_items lastObject] frame]) : SADropdownViewTopPadding,
                               CGRectGetWidth([self bounds]),
-                              44.0f)];
+                              52.0f)];
     [_items addObject:item];
 }
 

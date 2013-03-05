@@ -8,13 +8,20 @@
 
 #import "SADropdownItem.h"
 
+#import "UIColor+SAHelpers.h"
+
 @implementation SADropdownItem
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    if (self)
+    {
+        [self setBackgroundColor:[UIColor SADarkGreyColor]];
+        [[self titleLabel] setTextColor:[UIColor SALightGreyColor]];
+        [[self titleLabel] setShadowColor:[UIColor blackColor]];
+        [[self titleLabel] setShadowOffset:CGSizeMake(0.0f, 1.0f)];
+        [self setBackgroundImage:[UIImage imageNamed:@"dropdown_item_bg"] forState:UIControlStateNormal];
     }
     return self;
 }

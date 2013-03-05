@@ -11,7 +11,9 @@
 #import "SAHomeViewController.h"
 
 @interface SARootMenuViewController () <SAMenuViewControllerDatasource>
-
+{
+    NSArray *_menuItems;
+}
 @end
 
 @implementation SARootMenuViewController
@@ -24,6 +26,8 @@
     if (self)
     {
         [self setDatasource:self];
+        
+        _menuItems = @[@"Home", @"Explore", @"Activity", @"Profile"];
     }
     return self;
 }
@@ -41,7 +45,7 @@
 
 - (NSUInteger)numberOfRowsInMenuViewController:(SAMenuViewController *)menuViewController
 {
-    return 1;
+    return [_menuItems count];
 }
 
 - (UIImage *)menuViewController:(SAMenuViewController *)menuViewController imageForRowAtIndex:(NSUInteger)index
@@ -51,7 +55,7 @@
 
 - (NSString *)menuViewController:(SAMenuViewController *)menuViewController titleForRowAtIndex:(NSUInteger)index
 {
-    return @"Home";
+    return _menuItems[index];
 }
 
 @end

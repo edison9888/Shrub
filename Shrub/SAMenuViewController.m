@@ -12,6 +12,7 @@
 #import "SAMenuView.h"
 #import <objc/runtime.h>
 #import "SADropdownItem.h"
+#import <QuartzCore/QuartzCore.h>
 
 static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
 
@@ -39,8 +40,7 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
         [[_menuNavigationController view] setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
         [self addChildViewController:_menuNavigationController];
         
-        _dropdownView = [[SADropdownView alloc] initWithFrame:CGRectMake(0.0f, 44.0f - SADropdownViewTopPadding, 320.0f, 200.0f)];
-        [_dropdownView setBackgroundColor:[UIColor blackColor]];
+        _dropdownView = [[SADropdownView alloc] initWithFrame:CGRectMake(0.0f, 44.0f - SADropdownViewTopPadding, 320.0f, 0.0f)];
     }
     return self;
 }
@@ -85,7 +85,7 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
     {
         [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
-            [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, SADropdownViewTopPadding)];
+            [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, SADropdownViewTopPadding - [[_dropdownView layer] cornerRadius])];
             
         } completion:^(BOOL finished) {
             
