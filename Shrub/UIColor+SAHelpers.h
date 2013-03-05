@@ -12,5 +12,6 @@
 
 + (UIColor *)SADarkGreyColor;
 + (UIColor *)SALightGreyColor;
++ (UIColor *)SAGreenColor;
 
 @end

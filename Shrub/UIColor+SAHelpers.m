@@ -26,4 +26,12 @@
                            alpha:1.0f];
 }
 
++ (UIColor *)SAGreenColor
+{
+    return [UIColor colorWithRed:0.0f / 255.0f
+                           green:179.0f / 255.0f
+                            blue:134.0f / 255.0f
+                           alpha:1.0f];
+}
+
 @end

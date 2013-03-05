@@ -32,6 +32,8 @@
 		2258B3F416E5B4E100AB3DB4 /* SAActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3F216E5B4E100AB3DB4 /* SAActivityViewController.xib */; };
 		2258B3F816E5B4E800AB3DB4 /* SAProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2258B3F616E5B4E800AB3DB4 /* SAProfileViewController.m */; };
 		2258B3F916E5B4E800AB3DB4 /* SAProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3F716E5B4E800AB3DB4 /* SAProfileViewController.xib */; };
+		2258B3FD16E5BA0000AB3DB4 /* naviagtion_bar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3FB16E5BA0000AB3DB4 /* naviagtion_bar_bg.png */; };
+		2258B3FE16E5BA0000AB3DB4 /* navigation_bar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2258B3FC16E5BA0000AB3DB4 /* navigation_bar_bg@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		2258B3F516E5B4E800AB3DB4 /* SAProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAProfileViewController.h; sourceTree = "<group>"; };
 		2258B3F616E5B4E800AB3DB4 /* SAProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAProfileViewController.m; sourceTree = "<group>"; };
 		2258B3F716E5B4E800AB3DB4 /* SAProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAProfileViewController.xib; sourceTree = "<group>"; };
+		2258B3FB16E5BA0000AB3DB4 /* naviagtion_bar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = naviagtion_bar_bg.png; sourceTree = "<group>"; };
+		2258B3FC16E5BA0000AB3DB4 /* navigation_bar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar_bg@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,7 @@
 		2258B3E616E5B0F200AB3DB4 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				2258B3FA16E5B9F400AB3DB4 /* backgrounds */,
 				2258B3E716E5B0F600AB3DB4 /* buttons */,
 			);
 			name = assets;
@@ -277,6 +282,15 @@
 				2258B3F716E5B4E800AB3DB4 /* SAProfileViewController.xib */,
 			);
 			name = SAProfileViewController;
+			sourceTree = "<group>";
+		};
+		2258B3FA16E5B9F400AB3DB4 /* backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				2258B3FB16E5BA0000AB3DB4 /* naviagtion_bar_bg.png */,
+				2258B3FC16E5BA0000AB3DB4 /* navigation_bar_bg@2x.png */,
+			);
+			name = backgrounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +355,8 @@
 				2258B3EF16E5B4D700AB3DB4 /* SAExploreViewController.xib in Resources */,
 				2258B3F416E5B4E100AB3DB4 /* SAActivityViewController.xib in Resources */,
 				2258B3F916E5B4E800AB3DB4 /* SAProfileViewController.xib in Resources */,
+				2258B3FD16E5BA0000AB3DB4 /* naviagtion_bar_bg.png in Resources */,
+				2258B3FE16E5BA0000AB3DB4 /* navigation_bar_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
