@@ -102,7 +102,7 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
                 
             } completion:^(BOOL finished) {
                 
-                [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
+                [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
                     
                     [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, -CGRectGetHeight([_dropdownView bounds]))];
                     
