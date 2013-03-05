@@ -16,8 +16,15 @@
 
 static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
 
+typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
+{
+    SAMenuViewControllerSateResting,
+    SAMenuViewControllerSateAnimating
+};
+
 @interface SAMenuViewController () <SADropdownViewDelegate>
 {
+    SAMenuViewControllerSate _state;
     __weak SAMenuView *_menuView;
     UINavigationController *_menuNavigationController;
     SADropdownView *_dropdownView;
@@ -68,42 +75,49 @@ static const void *SAMenuViewControllerKey = &SAMenuViewControllerKey;
 
 - (void)setMenuHidden:(BOOL)menuHidden
 {
-    if ([self isMenuHidden])
+    if (_state == SAMenuViewControllerSateResting)
     {
-        [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, -CGRectGetHeight([_dropdownView bounds]))];
-        [[_menuNavigationController view] insertSubview:_dropdownView belowSubview:[_menuNavigationController navigationBar]];
+        _state = SAMenuViewControllerSateAnimating;
         
-        [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        if ([self isMenuHidden])
+        {
+            [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, -CGRectGetHeight([_dropdownView bounds]))];
+            [[_menuNavigationController view] insertSubview:_dropdownView belowSubview:[_menuNavigationController navigationBar]];
             
-            [_dropdownView setTransform:CGAffineTransformIdentity];
-            
-        } completion:^(BOOL finished) {
-            
-            
-        }];
-    }
-    else
-    {
-        [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
-            [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, SADropdownViewTopPadding - [[_dropdownView layer] cornerRadius])];
-            
-        } completion:^(BOOL finished) {
-            
-            [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
+            [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
                 
-                [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, -CGRectGetHeight([_dropdownView bounds]))];
+                [_dropdownView setTransform:CGAffineTransformIdentity];
+                
+            } completion:^(BOOL finished) {
+            
+                _state = SAMenuViewControllerSateResting;
+            
+            }];
+        }
+        else
+        {
+            [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                
+                [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, SADropdownViewTopPadding - [[_dropdownView layer] cornerRadius])];
                 
             } completion:^(BOOL finished) {
                 
-                [_dropdownView removeFromSuperview];
+                [UIView animateWithDuration:0.15f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
+                    
+                    [_dropdownView setTransform:CGAffineTransformMakeTranslation(0.0f, -CGRectGetHeight([_dropdownView bounds]))];
+                    
+                } completion:^(BOOL finished) {
+                    
+                    [_dropdownView removeFromSuperview];
+                    _state = SAMenuViewControllerSateResting;
+                    
+                }];
                 
             }];
-            
-        }];
+        }
+        
+        _menuHidden = menuHidden;
     }
-    
-    _menuHidden = menuHidden;
 }
 
 #pragma mark - Instance Methods
