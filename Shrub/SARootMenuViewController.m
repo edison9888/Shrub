@@ -60,8 +60,8 @@ static NSString * const SAMenuItemViewControllerClassKey = @"SAMenuItemViewContr
     if (![[self contentViewController] isKindOfClass:viewControllerClass])
     {
         [self setContentViewController:[viewControllerClass new]];
-        [self setMenuHidden:YES];
     }
+    [self setMenuHidden:YES];
 }
 
 #pragma mark - SAMenuViewControllerDatasource Methods
