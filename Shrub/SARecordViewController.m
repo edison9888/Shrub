@@ -21,6 +21,10 @@
     AVAssetWriterInput *_videoWriterInput;
     dispatch_queue_t _cameraQueue;
     AVCaptureConnection *_videoConnection;
+    CMTime _lastVideoTime;
+    CMTime _timeOffset;
+    BOOL _shouldCaptureBuffer;
+    BOOL _didBreakCapture;
 }
 @end
 
@@ -113,6 +117,17 @@
 
 #pragma mark - Instance Method
 
+- (IBAction)recordButtonTouchDown:(id)sender
+{
+    _shouldCaptureBuffer = YES;
+}
+
+- (IBAction)recordButtonTouchUp:(id)sender
+{
+    _shouldCaptureBuffer = NO;
+    _didBreakCapture = YES;
+}
+
 - (IBAction)closeButtonPressed:(id)sender
 {
     [_captureSession stopRunning];
@@ -135,9 +150,13 @@
 
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate methods
 
+// Credit to http://www.gdcl.co.uk/2013/02/20/iPhone-Pause.html
+// http://www.gdcl.co.uk/license.htm
+// for most of the code in the method below.
+
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    if (connection == _videoConnection)
+    if (connection == _videoConnection && _shouldCaptureBuffer)
     {
         if (CMSampleBufferDataIsReady(sampleBuffer))
         {
@@ -149,7 +168,51 @@
             }
             if ([_videoWriterInput isReadyForMoreMediaData])
             {
+                if (_didBreakCapture)
+                {
+                    _didBreakCapture = NO;
+                    CMTime timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+                    CMTime offset = CMTimeSubtract(timestamp, _lastVideoTime);
+                    if (_timeOffset.value == 0)
+                    {
+                        _timeOffset = offset;
+                    }
+                    else
+                    {
+                        _timeOffset = CMTimeAdd(_timeOffset, offset);
+                    }
+                }
+                
+                CFRetain(sampleBuffer);
+                
+                if (_timeOffset.value > 0)
+                {
+                    CFRelease(sampleBuffer);
+                    CMItemCount count;
+                    CMSampleBufferGetSampleTimingInfoArray(sampleBuffer, 0, nil, &count);
+                    CMSampleTimingInfo *pInfo = malloc(sizeof(CMSampleTimingInfo) * count);
+                    CMSampleBufferGetSampleTimingInfoArray(sampleBuffer, count, pInfo, &count);
+                    for (CMItemCount i = 0; i < count; i++)
+                    {
+                        pInfo[i].decodeTimeStamp = CMTimeSubtract(pInfo[i].decodeTimeStamp, _timeOffset);
+                        pInfo[i].presentationTimeStamp = CMTimeSubtract(pInfo[i].presentationTimeStamp, _timeOffset);
+                    }
+                    CMSampleBufferRef sout;
+                    CMSampleBufferCreateCopyWithNewTiming(nil, sampleBuffer, count, pInfo, &sout);
+                    sampleBuffer = sout;
+                    free(pInfo);
+                }
+                
+                CMTime timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+                CMTime dur = CMSampleBufferGetDuration(sampleBuffer);
+                if (dur.value > 0)
+                {
+                    timestamp = CMTimeAdd(timestamp, dur);
+                }
+                _lastVideoTime = timestamp;
+                
                 [_videoWriterInput appendSampleBuffer:sampleBuffer];
+                CFRelease(sampleBuffer);
             }
         }
     }
