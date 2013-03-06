@@ -33,8 +33,8 @@
 
 - (void)toggleMenuHidden;
 - (void)reloadData;
-- (void)showAccessoryViewController;
-- (void)hideAccessoryViewController;
+- (void)showAccessoryViewController:(void (^)())completionHandler;
+- (void)hideAccessoryViewController:(void (^)())completionHandler;
 
 @property (nonatomic, readonly, getter = isAccessoryViewControllerHidden) BOOL accessoryViewControllerHidden;
 @property (nonatomic, assign, getter = isMenuHidden) BOOL menuHidden;

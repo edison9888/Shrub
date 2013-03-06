@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2233FEBE16E6DDCC005FE86A /* SARecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2233FEBC16E6DDCC005FE86A /* SARecordViewController.m */; };
 		2233FEBF16E6DDCC005FE86A /* SARecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2233FEBD16E6DDCC005FE86A /* SARecordViewController.xib */; };
+		2233FEC216E6E567005FE86A /* x_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2233FEC016E6E567005FE86A /* x_button.png */; };
+		2233FEC316E6E567005FE86A /* x_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2233FEC116E6E567005FE86A /* x_button@2x.png */; };
 		2258B3A016E5994A00AB3DB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B39F16E5994A00AB3DB4 /* UIKit.framework */; };
 		2258B3A216E5994A00AB3DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B3A116E5994A00AB3DB4 /* Foundation.framework */; };
 		2258B3A416E5994A00AB3DB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B3A316E5994A00AB3DB4 /* CoreGraphics.framework */; };
@@ -42,6 +44,8 @@
 		2233FEBB16E6DDCC005FE86A /* SARecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SARecordViewController.h; sourceTree = "<group>"; };
 		2233FEBC16E6DDCC005FE86A /* SARecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SARecordViewController.m; sourceTree = "<group>"; };
 		2233FEBD16E6DDCC005FE86A /* SARecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SARecordViewController.xib; sourceTree = "<group>"; };
+		2233FEC016E6E567005FE86A /* x_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_button.png; sourceTree = "<group>"; };
+		2233FEC116E6E567005FE86A /* x_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_button@2x.png"; sourceTree = "<group>"; };
 		2258B39C16E5994A00AB3DB4 /* Shrub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shrub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2258B39F16E5994A00AB3DB4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2258B3A116E5994A00AB3DB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -264,6 +268,8 @@
 		2258B3E716E5B0F600AB3DB4 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				2233FEC016E6E567005FE86A /* x_button.png */,
+				2233FEC116E6E567005FE86A /* x_button@2x.png */,
 				2258B3E216E5B0E200AB3DB4 /* dropdown_item_bg.png */,
 				2258B3E316E5B0E200AB3DB4 /* dropdown_item_bg@2x.png */,
 			);
@@ -374,6 +380,8 @@
 				2258B3FD16E5BA0000AB3DB4 /* naviagtion_bar_bg.png in Resources */,
 				2258B3FE16E5BA0000AB3DB4 /* navigation_bar_bg@2x.png in Resources */,
 				2233FEBF16E6DDCC005FE86A /* SARecordViewController.xib in Resources */,
+				2233FEC216E6E567005FE86A /* x_button.png in Resources */,
+				2233FEC316E6E567005FE86A /* x_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

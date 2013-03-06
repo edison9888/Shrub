@@ -9,6 +9,7 @@
 #import "SAHomeViewController.h"
 
 #import "SAMenuViewController.h"
+#import "SARecordViewController.h"
 
 @interface SAHomeViewController ()
 
@@ -38,8 +39,8 @@
 
 - (void)cameraButtonPressed:(id)sender
 {
-    NSLog(@"%@", [self menuViewController]);
-    [[self menuViewController] showAccessoryViewController];
+    [[self menuViewController] setAccessoryViewController:[SARecordViewController new]];
+    [[self menuViewController] showAccessoryViewController:nil];
 }
 
 @end

@@ -32,7 +32,6 @@ static NSString * const SAMenuItemViewControllerClassKey = @"SAMenuItemViewContr
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        [self setAccessoryViewController:[SARecordViewController new]];
         [self setDatasource:self];
         [self setDelegate:self];
         

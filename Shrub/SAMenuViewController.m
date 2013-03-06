@@ -51,6 +51,8 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
         _menuHidden = YES;
         [self setMenuViewController:self];
         
+        _accessoryContainerView = [UIView new];
+        
         _menuNavigationController = [UINavigationController new];
         [_menuNavigationController setMenuViewController:self];
         [[_menuNavigationController view] setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
@@ -71,7 +73,7 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
 
 - (void)viewDidLoad
 {
-    _accessoryContainerView = [[UIView alloc] initWithFrame:[[self view] bounds]];
+    [_accessoryContainerView setFrame:[[self view] bounds]];
     [_accessoryContainerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [_accessoryContainerView setAutoresizesSubviews:YES];
     [[self view] addSubview:_accessoryContainerView];
@@ -151,7 +153,7 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
 
 #pragma mark - Instance Methods
 
-- (void)showAccessoryViewController
+- (void)showAccessoryViewController:(void (^)())completionHandler
 {
     _accessoryViewControllerHidden = NO;
     
@@ -161,10 +163,15 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
         
     } completion:^(BOOL finished) {
         
+        if (completionHandler)
+        {
+            completionHandler();
+        }
+        
     }];
 }
 
-- (void)hideAccessoryViewController
+- (void)hideAccessoryViewController:(void (^)())completionHandler
 {
     _accessoryViewControllerHidden = YES;
     
@@ -173,6 +180,11 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
         [[_menuNavigationController view] setTransform:CGAffineTransformIdentity];
         
     } completion:^(BOOL finished) {
+        
+        if (completionHandler)
+        {
+            completionHandler();
+        }
         
     }];
 }
