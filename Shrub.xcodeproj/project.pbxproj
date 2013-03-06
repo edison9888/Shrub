@@ -11,6 +11,9 @@
 		2233FEBF16E6DDCC005FE86A /* SARecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2233FEBD16E6DDCC005FE86A /* SARecordViewController.xib */; };
 		2233FEC216E6E567005FE86A /* x_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2233FEC016E6E567005FE86A /* x_button.png */; };
 		2233FEC316E6E567005FE86A /* x_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2233FEC116E6E567005FE86A /* x_button@2x.png */; };
+		2233FEC516E6E813005FE86A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2233FEC416E6E813005FE86A /* AVFoundation.framework */; };
+		2233FEC716E6E927005FE86A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2233FEC616E6E927005FE86A /* CoreVideo.framework */; };
+		2233FEC916E6F294005FE86A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2233FEC816E6F294005FE86A /* CoreMedia.framework */; };
 		2258B3A016E5994A00AB3DB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B39F16E5994A00AB3DB4 /* UIKit.framework */; };
 		2258B3A216E5994A00AB3DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B3A116E5994A00AB3DB4 /* Foundation.framework */; };
 		2258B3A416E5994A00AB3DB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B3A316E5994A00AB3DB4 /* CoreGraphics.framework */; };
@@ -46,6 +49,9 @@
 		2233FEBD16E6DDCC005FE86A /* SARecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SARecordViewController.xib; sourceTree = "<group>"; };
 		2233FEC016E6E567005FE86A /* x_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_button.png; sourceTree = "<group>"; };
 		2233FEC116E6E567005FE86A /* x_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_button@2x.png"; sourceTree = "<group>"; };
+		2233FEC416E6E813005FE86A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2233FEC616E6E927005FE86A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2233FEC816E6F294005FE86A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2258B39C16E5994A00AB3DB4 /* Shrub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shrub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2258B39F16E5994A00AB3DB4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2258B3A116E5994A00AB3DB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +100,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2233FEC916E6F294005FE86A /* CoreMedia.framework in Frameworks */,
+				2233FEC716E6E927005FE86A /* CoreVideo.framework in Frameworks */,
+				2233FEC516E6E813005FE86A /* AVFoundation.framework in Frameworks */,
 				2258B3A016E5994A00AB3DB4 /* UIKit.framework in Frameworks */,
 				2258B3A216E5994A00AB3DB4 /* Foundation.framework in Frameworks */,
 				2258B3A416E5994A00AB3DB4 /* CoreGraphics.framework in Frameworks */,
@@ -133,6 +142,9 @@
 		2258B39E16E5994A00AB3DB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2233FEC816E6F294005FE86A /* CoreMedia.framework */,
+				2233FEC616E6E927005FE86A /* CoreVideo.framework */,
+				2233FEC416E6E813005FE86A /* AVFoundation.framework */,
 				2258B39F16E5994A00AB3DB4 /* UIKit.framework */,
 				2258B3A116E5994A00AB3DB4 /* Foundation.framework */,
 				2258B3A316E5994A00AB3DB4 /* CoreGraphics.framework */,
