@@ -8,10 +8,23 @@
 
 #import "SARecordViewController.h"
 
+#import "SAMenuViewController.h"
+
 @interface SARecordViewController ()
 
 @end
 
 @implementation SARecordViewController
+
+#pragma mark - Instance Method
+
+- (IBAction)closeButtonPressed:(id)sender
+{
+    [[self menuViewController] hideAccessoryViewController:^{
+       
+        [[self menuViewController] setAccessoryViewController:nil];
+        
+    }];
+}
 
 @end

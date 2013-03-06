@@ -77,7 +77,7 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
     [_accessoryContainerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [_accessoryContainerView setAutoresizesSubviews:YES];
     [[self view] addSubview:_accessoryContainerView];
-
+    
     [[self view] addSubview:[_menuNavigationController view]];
 }
 
@@ -92,10 +92,13 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
         [[self accessoryViewController] removeFromParentViewController];
     }
     _accessoryViewController = accessoryViewController;
-    [self addChildViewController:[self accessoryViewController]];
-    [[self accessoryViewController] setMenuViewController:self];
-    [[[self accessoryViewController] view] setFrame:[_accessoryContainerView bounds]];
-    [_accessoryContainerView addSubview:[[self accessoryViewController] view]];
+    if ([self accessoryViewController])
+    {
+        [self addChildViewController:[self accessoryViewController]];
+        [[self accessoryViewController] setMenuViewController:self];
+        [[[self accessoryViewController] view] setFrame:[_accessoryContainerView bounds]];
+        [_accessoryContainerView addSubview:[[self accessoryViewController] view]];
+    }
 }
 
 - (void)setContentViewController:(UIViewController *)contentViewController
@@ -120,9 +123,9 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
                 [_dropdownView setTransform:CGAffineTransformIdentity];
                 
             } completion:^(BOOL finished) {
-            
+                
                 _state = SAMenuViewControllerSateResting;
-            
+                
             }];
         }
         else
@@ -242,7 +245,7 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
         menuViewController = objc_getAssociatedObject(viewController, SAMenuViewControllerKey);
         viewController = [viewController parentViewController];
     }
-
+    
     return menuViewController;
 }
 
