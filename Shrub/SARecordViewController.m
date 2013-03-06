@@ -205,6 +205,7 @@
                 
                 CMTime timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
                 CMTime dur = CMSampleBufferGetDuration(sampleBuffer);
+
                 if (dur.value > 0)
                 {
                     timestamp = CMTimeAdd(timestamp, dur);
