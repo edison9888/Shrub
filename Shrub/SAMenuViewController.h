@@ -33,11 +33,15 @@
 
 - (void)toggleMenuHidden;
 - (void)reloadData;
+- (void)showAccessoryViewController;
+- (void)hideAccessoryViewController;
 
+@property (nonatomic, readonly, getter = isAccessoryViewControllerHidden) BOOL accessoryViewControllerHidden;
 @property (nonatomic, assign, getter = isMenuHidden) BOOL menuHidden;
 @property (nonatomic, weak) id <SAMenuViewControllerDatasource> datasource;
 @property (nonatomic, weak) id <SAMenuViewControllerDelegate> delegate;
 @property (nonatomic, strong) UIViewController *contentViewController;
+@property (nonatomic, strong) UIViewController *accessoryViewController;
 
 @end
 

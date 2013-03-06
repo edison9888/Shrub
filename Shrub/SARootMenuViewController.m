@@ -12,6 +12,7 @@
 #import "SAActivityViewController.h"
 #import "SAExploreViewController.h"
 #import "SAProfileViewController.h"
+#import "SARecordViewController.h"
 
 static NSString * const SAMenuItemTitleKey = @"SAMenuItemTitle";
 static NSString * const SAMenuItemViewControllerClassKey = @"SAMenuItemViewControllerClass";
@@ -31,6 +32,7 @@ static NSString * const SAMenuItemViewControllerClassKey = @"SAMenuItemViewContr
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        [self setAccessoryViewController:[SARecordViewController new]];
         [self setDatasource:self];
         [self setDelegate:self];
         

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2233FEBE16E6DDCC005FE86A /* SARecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2233FEBC16E6DDCC005FE86A /* SARecordViewController.m */; };
+		2233FEBF16E6DDCC005FE86A /* SARecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2233FEBD16E6DDCC005FE86A /* SARecordViewController.xib */; };
 		2258B3A016E5994A00AB3DB4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B39F16E5994A00AB3DB4 /* UIKit.framework */; };
 		2258B3A216E5994A00AB3DB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B3A116E5994A00AB3DB4 /* Foundation.framework */; };
 		2258B3A416E5994A00AB3DB4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2258B3A316E5994A00AB3DB4 /* CoreGraphics.framework */; };
@@ -37,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2233FEBB16E6DDCC005FE86A /* SARecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SARecordViewController.h; sourceTree = "<group>"; };
+		2233FEBC16E6DDCC005FE86A /* SARecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SARecordViewController.m; sourceTree = "<group>"; };
+		2233FEBD16E6DDCC005FE86A /* SARecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SARecordViewController.xib; sourceTree = "<group>"; };
 		2258B39C16E5994A00AB3DB4 /* Shrub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shrub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2258B39F16E5994A00AB3DB4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2258B3A116E5994A00AB3DB4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +99,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2233FEBA16E6DDBA005FE86A /* SARecordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2233FEBB16E6DDCC005FE86A /* SARecordViewController.h */,
+				2233FEBC16E6DDCC005FE86A /* SARecordViewController.m */,
+				2233FEBD16E6DDCC005FE86A /* SARecordViewController.xib */,
+			);
+			name = SARecordViewController;
+			sourceTree = "<group>";
+		};
 		2258B39316E5994A00AB3DB4 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +139,7 @@
 		2258B3A516E5994A00AB3DB4 /* Shrub */ = {
 			isa = PBXGroup;
 			children = (
+				2233FEBA16E6DDBA005FE86A /* SARecordViewController */,
 				2258B3CF16E59F6800AB3DB4 /* SAHomeViewController */,
 				2258B3EA16E5B4BB00AB3DB4 /* SAProfileViewController */,
 				2258B3E916E5B4B200AB3DB4 /* SAActivityViewController */,
@@ -357,6 +373,7 @@
 				2258B3F916E5B4E800AB3DB4 /* SAProfileViewController.xib in Resources */,
 				2258B3FD16E5BA0000AB3DB4 /* naviagtion_bar_bg.png in Resources */,
 				2258B3FE16E5BA0000AB3DB4 /* navigation_bar_bg@2x.png in Resources */,
+				2233FEBF16E6DDCC005FE86A /* SARecordViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +396,7 @@
 				2258B3EE16E5B4D700AB3DB4 /* SAExploreViewController.m in Sources */,
 				2258B3F316E5B4E100AB3DB4 /* SAActivityViewController.m in Sources */,
 				2258B3F816E5B4E800AB3DB4 /* SAProfileViewController.m in Sources */,
+				2233FEBE16E6DDCC005FE86A /* SARecordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +511,7 @@
 				2258B3BB16E5994A00AB3DB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

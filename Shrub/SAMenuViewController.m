@@ -22,12 +22,19 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
     SAMenuViewControllerSateAnimating
 };
 
+@interface UIViewController ()
+
+@property (nonatomic, readwrite) SAMenuViewController *menuViewController;
+
+@end
+
 @interface SAMenuViewController () <SADropdownViewDelegate>
 {
     SAMenuViewControllerSate _state;
     __weak SAMenuView *_menuView;
     UINavigationController *_menuNavigationController;
     SADropdownView *_dropdownView;
+    UIView *_accessoryContainerView;
 }
 
 @end
@@ -42,8 +49,10 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
     if (self)
     {
         _menuHidden = YES;
+        [self setMenuViewController:self];
         
         _menuNavigationController = [UINavigationController new];
+        [_menuNavigationController setMenuViewController:self];
         [[_menuNavigationController view] setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
         [self addChildViewController:_menuNavigationController];
         
@@ -62,10 +71,30 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
 
 - (void)viewDidLoad
 {
+    _accessoryContainerView = [[UIView alloc] initWithFrame:[[self view] bounds]];
+    [_accessoryContainerView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+    [_accessoryContainerView setAutoresizesSubviews:YES];
+    [[self view] addSubview:_accessoryContainerView];
+
     [[self view] addSubview:[_menuNavigationController view]];
 }
 
 #pragma mark - Accessors
+
+- (void)setAccessoryViewController:(UIViewController *)accessoryViewController
+{
+    if ([self accessoryViewController])
+    {
+        [[self accessoryViewController] setMenuViewController:nil];
+        [[[self accessoryViewController] view] removeFromSuperview];
+        [[self accessoryViewController] removeFromParentViewController];
+    }
+    _accessoryViewController = accessoryViewController;
+    [self addChildViewController:[self accessoryViewController]];
+    [[self accessoryViewController] setMenuViewController:self];
+    [[[self accessoryViewController] view] setFrame:[_accessoryContainerView bounds]];
+    [_accessoryContainerView addSubview:[[self accessoryViewController] view]];
+}
 
 - (void)setContentViewController:(UIViewController *)contentViewController
 {
@@ -122,6 +151,32 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
 
 #pragma mark - Instance Methods
 
+- (void)showAccessoryViewController
+{
+    _accessoryViewControllerHidden = NO;
+    
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        [[_menuNavigationController view] setTransform:CGAffineTransformMakeTranslation(0.0f, CGRectGetHeight([[_menuNavigationController view] bounds]))];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)hideAccessoryViewController
+{
+    _accessoryViewControllerHidden = YES;
+    
+    [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        [[_menuNavigationController view] setTransform:CGAffineTransformIdentity];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 - (void)reloadData
 {
     [_dropdownView removeAllItems];
@@ -168,14 +223,14 @@ typedef NS_ENUM(NSUInteger, SAMenuViewControllerSate)
 - (SAMenuViewController *)menuViewController
 {
     SAMenuViewController *menuViewController = objc_getAssociatedObject(self, SAMenuViewControllerKey);
-    UIViewController *parentViewController = [self parentViewController];
+    UIViewController *viewController = self;
     
-    if (!menuViewController && parentViewController)
+    while (!menuViewController && viewController)
     {
-        menuViewController = objc_getAssociatedObject(self, SAMenuViewControllerKey);
-        parentViewController = [parentViewController parentViewController];
+        menuViewController = objc_getAssociatedObject(viewController, SAMenuViewControllerKey);
+        viewController = [viewController parentViewController];
     }
-    
+
     return menuViewController;
 }
 

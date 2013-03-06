@@ -16,6 +16,8 @@
 
 @implementation SAHomeViewController
 
+#pragma mark - UIViewController Overrides
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,8 +27,19 @@
         
         UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStyleBordered target:[self menuViewController] action:@selector(toggleMenuHidden)];
         [[self navigationItem] setLeftBarButtonItem:leftBarButton];
+        
+        UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(cameraButtonPressed:)];
+        [[self navigationItem] setRightBarButtonItem:rightBarButton];
     }
     return self;
+}
+
+#pragma mark - Instance Methods
+
+- (void)cameraButtonPressed:(id)sender
+{
+    NSLog(@"%@", [self menuViewController]);
+    [[self menuViewController] showAccessoryViewController];
 }
 
 @end
